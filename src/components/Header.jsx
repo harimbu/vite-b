@@ -1,26 +1,59 @@
-import { useState } from "react";
-import { MdInfo  } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
+import { useState } from 'react'
+import { AiFillGoogleCircle } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
-  const [modal, setModal] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const provider = new GoogleAuthProvider()
+  const auth = getAuth()
+
+  function login() {
+    signInWithPopup(auth, provider)
+      .then(result => {
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential.accessToken
+        const user = result.user
+        const uesrData = {
+          email: user.email,
+          photo: user.photoURL,
+        }
+        console.log(user)
+        setUser(uesrData)
+      })
+      .catch(error => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        const email = error.customData.email
+        const credential = GoogleAuthProvider.credentialFromError(error)
+      })
+  }
+
+  function logout() {
+    signOut(auth).then(() => {
+      setUser(null)
+    })
+  }
+
   return (
-    <div className="header">
+    <div className='header'>
       <Link to={'/'}>
         <h1>🧶🎨💋</h1>
       </Link>
-      <MdInfo onClick={()=>setModal(!modal)} />
-
-      {modal && (
-          <div className="modal">
-            <div className="info">
-              <h2>Lorem ipsum dolor sit amet.</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus non veritatis quam doloremque quisquam, dignissimos quod cupiditate molestiae vero iure iste labore atque. Similique, aliquid quidem ullam culpa est minus a nisi ab quo modi facilis blanditiis maxime reprehenderit eos perspiciatis quae quam beatae! A commodi dolor voluptatem at nesciunt!</p>
-              <button onClick={()=>setModal(!modal)}>확인</button>
-            </div>
+      {user ? (
+        <div className='user'>
+          <div className='photo'>
+            <img src={user.photo} alt='' />
           </div>
-        )
-      }
+          <div className='user_box'>
+            <p>{user.email}</p>
+            <span onClick={logout}>로그아웃</span>
+          </div>
+        </div>
+      ) : (
+        <AiFillGoogleCircle onClick={login} />
+      )}
     </div>
   )
 }

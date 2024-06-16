@@ -1,17 +1,16 @@
-import { MdOutlineAdd } from "react-icons/md";
-import Note from "./Note";
-import { Link } from "react-router-dom";
+import { MdOutlineAdd } from 'react-icons/md'
+import Note from './Note'
+import { Link } from 'react-router-dom'
 
-export default function Notes({notes}) {
-  
+export default function Notes({ notes }) {
   return (
     <>
-      <ul className="notes">
+      <ul className='notes'>
         {notes.map(note => (
           <Note note={note} key={note.title} />
-        ))} 
+        ))}
       </ul>
-      <div className="write">
+      <div className='write'>
         <Link to={'/write'}>
           <MdOutlineAdd />
         </Link>
