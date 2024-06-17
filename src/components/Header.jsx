@@ -12,7 +12,9 @@ export default function Header() {
         </h1>
       </Link>
 
-      <button className='login_btn'>로그인</button>
+      <Link to={'/login'}>
+        <button>로그인</button>
+      </Link>
     </div>
   )
 }

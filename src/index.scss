@@ -26,6 +26,25 @@ body {
 
 button {
   cursor: pointer;
+  background-color: var(--accent);
+  padding: 12px 20px;
+  border: none;
+  color: var(--gray-bright);
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--accent-ov);
+  }
+}
+
+input,
+textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  background-color: var(--gray-mid);
 }
 
 .header {
@@ -40,21 +59,14 @@ button {
   left: 0;
   width: 100%;
   z-index: 10;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
 
   h1 {
     font-size: 24px;
   }
 
-  .login_btn {
-    background-color: var(--accent);
+  button {
     padding: 6px 12px;
-    border: none;
-    border-radius: 5px;
-    color: var(--gray-bright);
-
-    &:hover {
-      background-color: var(--accent-ov);
-    }
   }
 }
 
@@ -140,39 +152,28 @@ button {
     text-align: center;
   }
 
-  div {
-    margin: 20px 0;
-  }
-
-  label {
-    display: block;
-    margin: 10px 0;
-  }
-
-  input,
-  textarea {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-    line-height: 1.6;
+  .inputbox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
   }
 
   .btns {
     display: flex;
-    gap: 6px;
+    gap: 8px;
+  }
 
-    button {
-      background-color: var(--accent);
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      color: var(--gray-bright);
+  .loginbox {
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-      &:hover {
-        background-color: var(--accent-ov);
-      }
+    .error_msg {
+      font-size: 14px;
+      text-align: center;
     }
   }
 }

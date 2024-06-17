@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Notes from './components/Notes'
 import Write from './page/Write'
 import Edit from './page/Edit'
+import Login from './page/Login'
 
 export default function App() {
   const [notes, setNotes] = useState([])
@@ -31,6 +32,7 @@ export default function App() {
         <Route path='/' element={<Notes notes={notes} />} />
         <Route path='/write' element={<Write />} />
         <Route path='/edit' element={<Edit />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   )
