@@ -10,7 +10,7 @@ export default function Notes({ notes }) {
           <Note note={note} key={note.title} />
         ))}
       </ul>
-      <div className='write'>
+      <div className='write_btn'>
         <Link to={'/write'}>
           <MdOutlineAdd />
         </Link>
