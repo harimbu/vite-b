@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { MdPerson } from 'react-icons/md'
 
 export default function Header() {
   const [user, setUser] = useState(null)
@@ -12,8 +13,8 @@ export default function Header() {
         </h1>
       </Link>
 
-      <Link to={'/login'}>
-        <button>로그인</button>
+      <Link to={'/login'} className='login_btn'>
+        <MdPerson />
       </Link>
     </div>
   )
