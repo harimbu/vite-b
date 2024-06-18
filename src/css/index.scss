@@ -67,10 +67,17 @@ textarea {
 
   .login_btn {
     padding: 0 10px;
-    font-size: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-    &:hover {
-      color: var(--thirdry);
+    svg {
+      font-size: 30px;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--thirdry);
+      }
     }
   }
 }
@@ -111,7 +118,18 @@ textarea {
 
       .btns {
         display: flex;
-        gap: 10px;
+        gap: 16px;
+
+        span {
+          cursor: pointer;
+          padding: 4px 8px;
+          border-radius: 4px;
+          background-color: var(--gray-dark);
+          &:hover {
+            background-color: var(--thirdry);
+            color: var(--gray-mid);
+          }
+        }
 
         svg {
           font-size: 24px;
@@ -172,13 +190,25 @@ textarea {
   .loginbox {
     max-width: 300px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .error_msg {
       font-size: 14px;
       text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+      color: var(--primary);
+
+      svg {
+        font-size: 18px;
+      }
     }
   }
 }
