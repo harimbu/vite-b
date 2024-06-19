@@ -4,3 +4,5 @@
 - react-router-dom
 - scss
 - react-icons
+- recoil
+- recoil persist
